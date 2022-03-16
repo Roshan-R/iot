@@ -13,13 +13,11 @@ class ReadingViews(APIView):
         else:
             return JsonResponse({"status": "error", "data": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request, id=None):
-        # Don't really know why if condition exists
-        if id:
-            item = Reading.objects.get(id=id)
-            serializer = ReadingSerializer(item)
-            return JsonResponse({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+    def get(self, request):
+        height = Reading.objects.filter(sensor_type=1)
+        water_level = Reading.objects.filter(sensor_type=2)
+        
+        height_serializer = ReadingSerializer(height, many=True)
+        water_serializer = ReadingSerializer(water_level, many=True)
 
-        items = Reading.objects.all()
-        serializer = ReadingSerializer(items, many=True)
-        return JsonResponse({"status": "success", "data": serializer.data}, status=status.HTTP_200_OK)
+        return JsonResponse({"height": height_serializer.data,  "water_level": water_serializer.data}, status=status.HTTP_200_OK)
