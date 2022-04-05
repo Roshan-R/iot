@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import SensorType, Reading
+from .models import SensorType, Reading, Input
 
 class SensorTypeSerializer(serializers.ModelSerializer):
   class Meta:
@@ -16,3 +16,13 @@ class ReadingSerializer(serializers.ModelSerializer):
         ret.pop('sensor_type')
         ret.pop('id')
         return ret
+
+class InputSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Input
+        fields = ('__all__')
+
+    def to_representation(self, instance):
+        ret = super(InputSerializer, self).to_representation(instance)
+        return ret
+    

@@ -14,6 +14,16 @@ class Reading(models.Model):
     reading = models.FloatField()
     date = models.DateTimeField(default=now, blank=True)
 
-    
     def __str__(self):
         return self.sensor_type.sensor_type + " : " + str(self.reading) 
+
+class Input(models.Model):
+    temperature = models.FloatField()
+    dew = models.FloatField()
+    precipitation = models.FloatField()
+    humidity = models.FloatField()
+    density = models.FloatField()
+    speed = models.FloatField()
+    direction = models.FloatField()
+    time = models.DateTimeField()
+
