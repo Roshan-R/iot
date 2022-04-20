@@ -4,7 +4,7 @@ from .models import SensorType, Reading, Input
 class SensorTypeSerializer(serializers.ModelSerializer):
   class Meta:
     model=SensorType
-    
+
 class ReadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reading
@@ -25,4 +25,3 @@ class InputSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         ret = super(InputSerializer, self).to_representation(instance)
         return ret
-    

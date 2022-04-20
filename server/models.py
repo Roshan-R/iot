@@ -19,6 +19,7 @@ class Reading(models.Model):
 
 class Input(models.Model):
     temperature = models.FloatField()
+    pressure = models.FloatField()
     dew = models.FloatField()
     precipitation = models.FloatField()
     humidity = models.FloatField()
