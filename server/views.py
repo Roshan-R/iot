@@ -5,18 +5,18 @@ from .serializers import ReadingSerializer, InputSerializer
 from .models import Reading, SensorType
 from .util import createJson
 
-# mapping = {
-    # "height" : 1,
-    # "water_level" : 2,
-    # "dew" : 3,
-    # "precipitation" : 4,
-    # "humidity" : 5,
-    # "density" : 6,
-    # "speed" : 7,
-    # "direction" : 8,
-    # "temperature" : 9,
-    # "pressure" : 10,
-# }
+mapping = {
+    "height" : 1,
+    "water_level" : 2,
+    "dew" : 3,
+    "precipitation" : 4,
+    "humidity" : 5,
+    "density" : 6,
+    "speed" : 7,
+    "direction" : 8,
+    "temperature" : 9,
+    "pressure" : 10,
+}
 
 class ReadingViews(APIView):
     # on post request 

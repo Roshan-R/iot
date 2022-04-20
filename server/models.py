@@ -26,5 +26,6 @@ class Input(models.Model):
     density = models.FloatField()
     speed = models.FloatField()
     direction = models.FloatField()
+    height = models.FloatField()
     time = models.DateTimeField()
 
