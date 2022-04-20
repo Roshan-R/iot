@@ -16,7 +16,6 @@ class ReadingViews(APIView):
     def get(self, request):
         height = Reading.objects.filter(sensor_type=1)
         water_level = Reading.objects.filter(sensor_type=2)
-        
         height_serializer = ReadingSerializer(height, many=True)
         water_serializer = ReadingSerializer(water_level, many=True)
 
@@ -25,7 +24,7 @@ class ReadingViews(APIView):
 mapping = {
     "height" : 1,
     "water_level" : 2,
-    "dew" : 3, 
+    "dew" : 3,
     "precipitation" : 4,
     "humidity" : 5,
     "density" : 6,
@@ -38,7 +37,6 @@ def saveSensorInputData(data):
     for sensor in data:
         if sensor != 'time':
             sensortype = SensorType.objects.all()[mapping[sensor] - 1]
-    temperature = Reading(sensor_type=sensortype, reading=data['temperature'], date=data['time'])
-    temperature.save()
-    print(temperature)
-
+            reading = Reading(sensor_type=sensortype, reading=data[str(sensortype)], date=data['time'])
+            reading.save()
+            print(reading)
